@@ -1,0 +1,15 @@
+import numpy as np
+
+A = np.array([[2, 3, 4],
+              [3, 11, 10],
+              [2, 1, 5]])
+
+B = np.array([11, 20, 8])
+
+# Inverse of A
+A_inv = np.linalg.inv(A)
+
+# Solution
+X = A_inv.dot(B)
+
+print("Solution Vector [x, y, z]:", X)
