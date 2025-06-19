@@ -1,0 +1,18 @@
+
+# Transpose
+def matrix_transpose(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    transpose = []
+    for j in range(cols):
+        new_row = []
+        for i in range(rows):
+            new_row.append(matrix[i][j])
+        transpose.append(new_row)
+    return transpose
+
+A_transpose = matrix_transpose(A)
+print(f"\nTranspose A:")
+for row in A_transpose:
+    print(row)
+
