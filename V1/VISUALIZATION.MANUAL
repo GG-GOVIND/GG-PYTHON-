@@ -1,0 +1,49 @@
+
+# visualization
+def plot_equations(A, b, solution):
+    print(f"\nVisualization:")
+    print(f"Solution point: ({solution[0]:.2f}, {solution[1]:.2f})")
+    
+    print(f"\nASCII Plot (approximate):")
+    print("y")
+    print("^")
+    
+    x_vals = [-2, -1, 0, 1, 2, 3, 4]
+    print("Points on Line 1 (y = :")
+    for x in x_vals:
+        if A[0][1] != 0:
+            y = (b[0] - A[0][0] * x) / A[0][1]
+            print(f"  x = {x}, y = {y:.2f}")
+    
+    print("Points on Line 2 (y =:")
+    for x in x_vals:
+        if A[1][1] != 0:
+            y = (b[1] - A[1][0] * x) / A[1][1]
+            print(f"  x = {x}, y = {y:.2f}")
+
+plot_equations(A, b, x_gaussian)
+
+# Verification
+def verify_solution(A, x, b):
+    result = matrix_vector_multiply(A, x)
+    print(f"\nVerification:")
+    print(f"A * x = {[round(val, 6) for val in result]}")
+    print(f"b = {b}")
+    
+    error = 0
+    for i in range(len(b)):
+        error += (result[i] - b[i]) ** 2
+    error = error ** 0.5
+    print(f"Error = {error}")
+    
+    # LU decomposition
+    LU_product = matrix_multiply_2x2(L, U)
+    print(f"\nLU Verification:")
+    print(f"L * U =")
+    for row in LU_product:
+        print([round(x, 6) for x in row])
+    print(f"Original A =")
+    for row in A:
+        print(row)
+
+verify_solution(A, x_gaussian, b)
